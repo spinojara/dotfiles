@@ -1,0 +1,14 @@
+syntax on
+filetype plugin on
+filetype indent on
+
+set number
+set relativenumber
+set hlsearch
+set nowrap
+
+set laststatus=2
+set statusline=
+set statusline+=%1*\%F         " Filename
+set statusline+=%1*\ %=\ %l/%L " Row/Total row
+set statusline+=%1*\ %3v\      " Virtual column
