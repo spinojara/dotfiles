@@ -1,0 +1,15 @@
+[user]
+	email = isak01@gmail.com
+	name = Isak Ellmer
+[pull]
+	rebase = true
+[alias]
+	adog = log --all --decorate --oneline --graph
+	br = branch
+	st = status
+	ci = commit
+	co = checkout
+[pager]
+	diff = false
+[merge]
+	tool = vimdiff
