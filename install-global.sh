@@ -11,6 +11,8 @@ mkdir -p /etc/vim
 cp vim/vimrc /etc/vim/vimrc.local
 mkdir -p /usr/share/vim/vimfiles/after/syntax
 cp vim/c.vim /usr/share/vim/vimfiles/after/syntax/c.vim
+mkdir -p /usr/share/vim/vimfiles/ftplugin
+cp vim/tex.vim /usr/share/vim/vimfiles/ftplugin/tex.vim
 
 # tmux
 cp tmux/tmux.conf /etc/tmux.conf
