@@ -13,5 +13,5 @@ set statusline+=%1*\%F         " Filename
 set statusline+=%1*\ %=\ %l/%L " Row/Total row
 set statusline+=%1*\ %3v\      " Virtual column
 
-let g:matchparen_timeout=2
-let g:matchparen_insert_timeout=2
+let g:matchparen_timeout=10
+let g:matchparen_insert_timeout=10
