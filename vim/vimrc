@@ -15,3 +15,10 @@ set statusline+=%1*\ %3v\      " Virtual column
 
 let g:matchparen_timeout=10
 let g:matchparen_insert_timeout=10
+
+" Highlight trailing whitespace
+highlight Whitespace ctermbg=red
+match Whitespace /\s\+$/
+autocmd BufWinEnter * match Whitespace /\s\+$/
+autocmd InsertEnter * match Whitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match Whitespace /\s\+$/
