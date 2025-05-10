@@ -1,0 +1,60 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": 24,
+    "spacing": 0,
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+    ],
+    "modules-right": [
+        "network",
+        "pulseaudio",
+        "backlight",
+        "battery",
+        "clock"
+    ],
+    "clock": {
+        "interval": 60,
+        "format": "{:%Y-%m-%d %H:%M} \udb82\udd54"
+    },
+    "backlight": {
+        "format": "{percent:>3}% {icon}",
+        "format-icons": ["\ue38d", "\ue3d4", "\ue3d3", "\ue3d2", "\ue3d1", "\ue3d0", "\ue3cf", "\ue3ce", "\ue3cd", "\ue3cc", "\ue3cb", "\ue3ca", "\ue3c9", "\ue3c8", "\ue39b"]
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity:>3}% {icon}",
+        "format-full": "{capacity:>3}% {icon}",
+        "format-charging": "{capacity:>3}% \udb80\udc84",
+        "format-plugged": "{capacity:>3}% \udb80\udc84",
+        "format-icons": ["\udb80\udc8e", "\udb80\udc7c", "\udb80\udc7e", "\udb80\udc80", "\udb80\udc79"]
+    },
+    "network": {
+        "format-wifi": "{essid} {signalStrength:>3}% {ipaddr}/{cidr} \udb81\udda9",
+        "format-ethernet": "{ipaddr}/{cidr} \udb80\ude01",
+        "format-linked": "{ifname} (No IP) \udb80\ude01",
+        "format-disconnected": "Disconnected \udb80\udf19"
+    },
+    "pulseaudio": {
+        "format": "{volume:>3}% {icon} {format_source}",
+        "format-muted": "{volume:>3}% \udb81\udf5f {format_source}",
+        "format-bluetooth": "{volume:>3}% \udb80\udcaf {format_source}",
+        "format-bluetooth-muted": "{volume:>3}% \udb80\udcb2 {format_source}",
+        "format-source": "{volume:>3}% \udb80\udf6c",
+        "format-source-muted": "{volume:>3}% \udb80\udf6d",
+        "format-icons": {
+            "headphone": "\udb80\udecb",
+            "hands-free": "\udb80\udecb",
+            "headset": "\udb80\udece",
+            "phone": "\udb80\udff2",
+            "portable": "\udb80\udff2",
+            "car": "\udb80\udd0b",
+            "default": ["\udb81\udd7f", "\udb81\udd80", "\udb81\udd7e"]
+        }
+    }
+}
