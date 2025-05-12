@@ -1,0 +1,14 @@
+font=Mx437 IBM VGA 8x16 12
+text-color=#282828
+background-color=#98971a
+border-color=#b8bb26
+anchor=top-right
+format=<u>%a</u>\n%s\n\n%b\n
+icon-location=right
+
+[grouped]
+format=<u>%a</u> (%g)\n%s\n\n%b\n
+
+[urgency=critical]
+background-color=#cc241d
+border-color=#fb4934

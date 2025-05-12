@@ -31,3 +31,11 @@ cp hypr/{gruvbox,hypridle,hyprland,hyprlock}.conf $HOME/.config/hypr
 # waybar
 mkdir -p $HOME/.config/waybar
 cp waybar/{config.jsonc,style.css} $HOME/.config/waybar
+
+# foot
+mkdir -p $HOME/.config/foot
+cp foot/foot.ini $HOME/.config/foot
+
+# mako
+mkdir -p $HOME/.config/mako
+cp mako/config $HOME/.config/mako
