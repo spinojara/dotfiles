@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 set -x
 
@@ -26,7 +26,12 @@ cp tmux/tmux.conf $HOME/.tmux.conf
 
 # hyprland
 mkdir -p $HOME/.config/hypr
-cp hypr/{gruvbox,hypridle,hyprland,hyprlock}.conf $HOME/.config/hypr
+cp hypr/{gruvbox,hyprlock,common}.conf $HOME/.config/hypr
+for PLATFORM in desktop laptop; do
+	if [[ "$HOSTNAME" == *"$PLATFORM"* ]]; then
+		cp hypr/$PLATFORM/{hyprland,hypridle}.conf $HOME/.config/hypr
+	fi
+done
 
 # waybar
 mkdir -p $HOME/.config/waybar
