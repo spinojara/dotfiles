@@ -1,5 +1,4 @@
 {
-    "layer": "top",
     "position": "bottom",
     "height": 24,
     "spacing": 0,
@@ -15,6 +14,15 @@
         "battery",
         "clock"
     ],
+    "hyprland/workspaces": {
+        "disable-scroll": false,
+        "format": "{icon}",
+        "format-icons": {
+            "10": "q",
+            "11": "w",
+            "12": "e"
+        }
+    },
     "clock": {
         "interval": 60,
         "format": "{:%Y-%m-%d %H:%M} \udb82\udd54"
