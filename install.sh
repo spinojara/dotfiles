@@ -29,7 +29,7 @@ mkdir -p $HOME/.config/hypr
 cp hypr/{gruvbox,hyprlock,common}.conf $HOME/.config/hypr
 for PLATFORM in desktop laptop; do
 	if [[ "$HOSTNAME" == *"$PLATFORM"* ]]; then
-		cp hypr/$PLATFORM/*.conf $HOME/.config/hypr
+		cp hypr/$PLATFORM/* $HOME/.config/hypr
 	fi
 done
 
@@ -46,5 +46,5 @@ mkdir -p $HOME/.config/mako
 cp mako/config $HOME/.config/mako
 
 # tofi
-mkdir -p $HOME/tofi
+mkdir -p $HOME/.config/tofi
 cp tofi/tofi.ini $HOME/.config/tofi
