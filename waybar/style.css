@@ -1,53 +1,55 @@
+@import "color.css";
+
 * {
     font-family: 'Mx437 IBM VGA 8x16', 'Symbols Nerd Font Mono';
     font-size: 16px;
 }
 
 window#waybar {
-    background-color: #282828;
-    color: #ebdbb2;
+    background-color: alpha(@black, 0.50);
+    color: @whitehl;
+    border-radius: 14px;
     transition-property: background-color;
-    transition-duration: .5s;
+    transition-duration: 0s;
 }
 
 button {
     box-shadow: inset 0 -3px transparent;
     border: none;
+    color: @whitehl;
     border-radius: 0;
+    transition-duration: 0s;
 }
 
 #workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
-    color: #ebdbb2;
-    font-size: 16px;
+    padding: 0 4px;
 }
 
 #workspaces button:hover {
-    background: #282828;
-    color: #ebdbb2;
+    background: inherit;
+    color: inherit;
     text-shadow: none;
 }
 
 #workspaces button.focused {
-    /* magenta */
-    background-color: #b16286;
-    box-shadow: inset 0 -3px #ebdbb2;
+    color: @magenta;
 }
 
 #workspaces button.urgent {
-    /* red */
-    background-color: #cc241d;
+    color: @red;
+    animation-name: blinkwhite;
+    animation-duration: .5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 #workspaces button.active {
-    /* green */
-    background-color: #98971a;
+    color: @red;
 }
 
 #mode {
-    /* yellow */
-    background-color: #d79921;
+    color: @yellow;
 }
 
 #clock,
@@ -56,8 +58,7 @@ button {
 #network,
 #pulseaudio {
     padding: 0 10px;
-    background-color: #282828;
-    color: #ebdbb2;
+    background-color: transparent;
 }
 
 #window,
@@ -65,23 +66,27 @@ button {
     margin: 0 4px;
 }
 
-@keyframes blink {
+@keyframes blinkred {
     to {
-        background-color: #282828;
-        color: #fb4934;
+        color: @red;
+    }
+}
+
+@keyframes blinkwhite {
+    to {
+        color: @whitehl;
     }
 }
 
 #battery.critical:not(.charging) {
-    background-color: #282828;
-    color: #ebdbb2;
-    animation-name: blink;
-    animation-duration: 0.5s;
+    background-color: transparent;
+    animation-name: blinkred;
+    animation-duration: .5s;
     animation-timing-function: steps(12);
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
 
 #network.disconnected {
-    color: #fb4934;
+    color: @red;
 }

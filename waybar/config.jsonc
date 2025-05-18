@@ -1,7 +1,11 @@
 {
-    "position": "bottom",
-    "height": 24,
-    "spacing": 0,
+    "position": "top",
+    "margin-top": 10,
+    "margin-bottom": 0,
+    "margin-left": 10,
+    "margin-right": 10,
+    "height": 28,
+    "spacing": 10,
     "modules-left": [
         "hyprland/workspaces"
     ],
@@ -20,7 +24,9 @@
         "format-icons": {
             "10": "q",
             "11": "w",
-            "12": "e"
+            "12": "e",
+            "13": "r",
+            "14": "t"
         }
     },
     "clock": {

@@ -29,13 +29,13 @@ mkdir -p $HOME/.config/hypr
 cp hypr/{gruvbox,hyprlock,common}.conf $HOME/.config/hypr
 for PLATFORM in desktop laptop; do
 	if [[ "$HOSTNAME" == *"$PLATFORM"* ]]; then
-		cp hypr/$PLATFORM/{hyprland,hypridle}.conf $HOME/.config/hypr
+		cp hypr/$PLATFORM/*.conf $HOME/.config/hypr
 	fi
 done
 
 # waybar
 mkdir -p $HOME/.config/waybar
-cp waybar/{config.jsonc,style.css} $HOME/.config/waybar
+cp waybar/{config.jsonc,style.css,color.css} $HOME/.config/waybar
 
 # foot
 mkdir -p $HOME/.config/foot
@@ -44,3 +44,7 @@ cp foot/foot.ini $HOME/.config/foot
 # mako
 mkdir -p $HOME/.config/mako
 cp mako/config $HOME/.config/mako
+
+# tofi
+mkdir -p $HOME/tofi
+cp tofi/tofi.ini $HOME/.config/tofi
