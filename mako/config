@@ -1,10 +1,17 @@
 font=Mx437 IBM VGA 8x16 12
-text-color=#282828
-background-color=#98971a
-border-color=#b8bb26
 anchor=top-right
 format=<u>%a</u>\n%s\n\n%b\n
 icon-location=right
+
+text-color=#282828
+background-color=#98971a
+border-color=#b8bb26
+
+border-size=2
+border-radius=8
+padding=10
+margin=10
+outer-margin=10,11
 
 [grouped]
 format=<u>%a</u> (%g)\n%s\n\n%b\n
