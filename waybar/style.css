@@ -44,7 +44,7 @@ button {
     animation-direction: alternate;
 }
 
-#workspaces button.active {
+#workspaces button.visible {
     color: @red;
 }
 
