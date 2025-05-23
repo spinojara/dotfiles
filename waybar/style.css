@@ -6,9 +6,9 @@
 }
 
 window#waybar {
-    background-color: alpha(@black, 0.50);
+    background-color: alpha(@red, 0.01);
     color: @whitehl;
-    border-radius: 14px;
+    border-radius: 999px;
     transition-property: background-color;
     transition-duration: 0s;
 }
@@ -22,7 +22,7 @@ button {
 }
 
 #workspaces button {
-    padding: 0 4px;
+    padding: 0px 4px;
 }
 
 #workspaces button:hover {
@@ -31,12 +31,13 @@ button {
     text-shadow: none;
 }
 
-#workspaces button.focused {
-    color: @magenta;
+#workspaces button.empty {
+    opacity: 0.5;
 }
 
 #workspaces button.urgent {
     color: @red;
+    opacity: 1.0;
     animation-name: blinkwhite;
     animation-duration: .5s;
     animation-timing-function: steps(12);
@@ -46,10 +47,7 @@ button {
 
 #workspaces button.visible {
     color: @red;
-}
-
-#mode {
-    color: @yellow;
+    opacity: 1.0;
 }
 
 #clock,
@@ -57,11 +55,10 @@ button {
 #backlight,
 #network,
 #pulseaudio {
-    padding: 0 10px;
+    padding: 0 8px;
     background-color: transparent;
 }
 
-#window,
 #workspaces {
     margin: 0 4px;
 }
