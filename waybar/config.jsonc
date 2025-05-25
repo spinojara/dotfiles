@@ -14,6 +14,7 @@
     "modules-right": [
         "network",
         "pulseaudio",
+        "custom/hyperxbattery",
         "backlight",
         "battery",
         "clock"
@@ -50,6 +51,7 @@
         "format-icons": ["\udb80\udc8e", "\udb80\udc7c", "\udb80\udc7e", "\udb80\udc80", "\udb80\udc79"]
     },
     "network": {
+        "family": "ipv4",
         "format-wifi": "{essid} {signalStrength:>3}% {ipaddr}/{cidr} \udb81\udda9",
         "format-ethernet": "{ipaddr}/{cidr} \udb80\ude01",
         "format-linked": "{ifname} (No IP) \udb80\ude01",
@@ -70,6 +72,16 @@
             "portable": "\udb80\udff2",
             "car": "\udb80\udd0b",
             "default": ["\udb81\udd7f", "\udb81\udd80", "\udb81\udd7e"]
+        }
+    },
+    "custom/hyperxbattery": {
+        "exec": "hyerpxwaybar",
+        "exec-on-event": false,
+        "return-type": "json",
+        "format": "{text} {icon}",
+        "format-icons": {
+            "online": "\udb80\udece",
+            "default": "\udb80\uded0"
         }
     }
 }
