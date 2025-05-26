@@ -14,7 +14,6 @@
     "modules-right": [
         "network",
         "pulseaudio",
-        "custom/hyperxbattery",
         "backlight",
         "battery",
         "clock"
@@ -76,6 +75,8 @@
     },
     "custom/hyperxbattery": {
         "exec": "hyerpxwaybar",
+        "exec-if": "which hyerpxwaybar",
+        "restart-interval": 1,
         "exec-on-event": false,
         "return-type": "json",
         "format": "{text} {icon}",
