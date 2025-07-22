@@ -5,7 +5,9 @@ filetype indent on
 set number
 set relativenumber
 set hlsearch
-set nowrap
+set wrap
+set wildmode=longest:list
+set incsearch
 
 set laststatus=2
 set statusline=
