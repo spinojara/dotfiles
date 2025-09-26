@@ -9,6 +9,6 @@ if [[ -n "$SSH_CONNECTION" ]] && [[ -z "$TMUX" ]] && which tmux > /dev/null 2>&1
 	tmux new-session -A -s ssh
 fi
 
-if [[ -z "$SSH_CONNECTION" ]] && which Hyprland > /dev/null 2>&1 && [[ "$(id -u)" -ne 0 ]]; then
+if [[ -z "$SSH_CONNECTION" ]] && which Hyprland > /dev/null 2>&1 && [[ "$(id -u)" -ne 0 ]] && [[ "$(tty)" == "/dev/tty1" ]]; then
 	exec dbus-run-session Hyprland
 fi
