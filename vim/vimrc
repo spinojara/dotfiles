@@ -17,6 +17,7 @@ set statusline+=%1*\ %3v\      " Virtual column
 
 let g:matchparen_timeout=10
 let g:matchparen_insert_timeout=10
+let g:sleuth_editorconfig_disable=1
 
 " Highlight trailing whitespace
 highlight Whitespace ctermbg=red
