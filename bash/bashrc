@@ -7,3 +7,9 @@ PS1='\[\033[0;31m\]\h \[\033[0;34m\]\W $(if [[ $? != 0 ]]; then echo -e "\[\[\03
 alias ls="ls --color=always"
 alias grep="grep --color=always -I"
 alias less="less -R"
+
+PROMPT_COMMAND='history -a'
+
+if which fzf > /dev/null 2>&1; then
+	source <(fzf --bash)
+fi
