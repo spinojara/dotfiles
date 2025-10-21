@@ -39,6 +39,7 @@
       (config.lib.nixGL.wrap hyprland)
       (config.lib.nixGL.wrap hypridle)
       (config.lib.nixGL.wrap firefox)
+      hyprshot
       hyprwayland-scanner
       nerd-fonts.symbols-only
       tofi
