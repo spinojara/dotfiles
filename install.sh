@@ -26,7 +26,7 @@ cp tmux/tmux.conf $HOME/.tmux.conf
 # hyprland
 mkdir -p $HOME/.config/hypr
 cp hypr/{gruvbox,hyprlock,common}.conf $HOME/.config/hypr
-for PLATFORM in pc64101-2536 gentoo-desktop gentoo-laptop; do
+for PLATFORM in gentoo-desktop gentoo-laptop pc64101-2536 lap1h85115chs; do
 	if [[ "$HOSTNAME" == "$PLATFORM" ]]; then
 		cp hypr/$PLATFORM/* $HOME/.config/hypr
 	fi
