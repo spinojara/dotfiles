@@ -8,7 +8,9 @@ alias ls="ls --color=always"
 alias grep="grep --color=always -I"
 alias less="less -R"
 
-PROMPT_COMMAND='history -a'
+export PROMPT_COMMAND='history -a'
+export HISTSIZE=
+export HISTFILESIZE=
 
 if which fzf > /dev/null 2>&1; then
 	source <(fzf --bash)
