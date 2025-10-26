@@ -6,7 +6,7 @@ fi
 
 # start tmux if this is an ssh connection
 if [[ -n "$SSH_CONNECTION" ]] && [[ -z "$TMUX" ]] && which tmux > /dev/null 2>&1; then
-	tmux new-session -A -s ssh
+	tmux -2 new-session -A -s ssh
 fi
 
 if [[ -z "$SSH_CONNECTION" ]] && which Hyprland > /dev/null 2>&1 && [[ "$(id -u)" -ne 0 ]] && [[ "$(tty)" == "/dev/tty1" ]]; then
