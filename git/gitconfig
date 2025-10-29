@@ -4,12 +4,18 @@
 [pull]
 	rebase = true
 [alias]
-	adog = log --all --decorate --oneline --graph
+	adog = log --all --decorate --graph --pretty=format:'%C(auto)%h%C(reset) %C(magenta)%an%C(reset)%C(auto)%d%C(reset) %s'
 	br = branch
 	st = status
 	ci = commit
 	co = checkout
 [pager]
-	diff = false
+	diff = true
 [merge]
 	tool = vimdiff
+[diff]
+	tool = vimdiff
+[core]
+	editor = vim
+[log]
+	date = iso
