@@ -16,7 +16,7 @@ cp bash/inputrc $HOME/.inputrc
 
 # vim
 mkdir -p $HOME/.vim/{ftplugin,after/syntax}
-cp vim/vimrc $HOME/.vim
+cp vim/{vimrc,coc-settings.json} $HOME/.vim
 cp vim/{syncolor,c}.vim $HOME/.vim/after/syntax
 cp vim/tex.vim $HOME/.vim/ftplugin
 

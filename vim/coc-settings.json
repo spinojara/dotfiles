@@ -1,0 +1,16 @@
+{
+	"suggest.autoTrigger": "none",
+	"inlineSuggest.autoTrigger": "none",
+	"diagnostic.enable": false,
+	"inlayHint.enable": false,
+	"signature.enable": true,
+	"signature.floatConfig": {
+		"border": true,
+		"position": "fixed",
+		"top": 2,
+		"right": 3
+	},
+
+	"clangd.path": "/usr/bin/clangd-20",
+	"clangd.arguments": [ "-j", "4" ]
+}
