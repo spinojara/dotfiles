@@ -11,7 +11,7 @@
       name = "Adwaita";
       package = pkgs.adwaita-icon-theme;
       size = 24;
-    };
+  };
   gtk = {
     enable = true;
     theme = {
@@ -48,6 +48,17 @@
       foot
       mako
     ];
+  };
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gtk
+    ];
+    config = {
+      hyprland.default = [ "hyprland" "gtk" ];
+    };
   };
 
   programs.home-manager.enable = true;
