@@ -4,8 +4,10 @@
   lib,
   inputs,
   nixGL,
+  pkgs-clickhouse,
   ...
-}: {
+}:
+{
   home.pointerCursor = {
       gtk.enable = true;
       name = "Adwaita";
@@ -35,10 +37,13 @@
     homeDirectory = "/home/isakel";
     stateVersion = "25.11";
     packages = with pkgs; [
-      (config.lib.nixGL.wrap glxinfo)
+      (config.lib.nixGL.wrap mesa-demos)
       (config.lib.nixGL.wrap hyprland)
       (config.lib.nixGL.wrap hypridle)
       (config.lib.nixGL.wrap firefox)
+      kubectl
+      kind
+      kubernetes-helm
       hyprshot
       hyprwayland-scanner
       nerd-fonts.symbols-only
@@ -47,6 +52,8 @@
       vim
       foot
       mako
+      spotify
+      pkgs-clickhouse.clickhouse
     ];
   };
 
