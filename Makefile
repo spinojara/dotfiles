@@ -1,6 +1,6 @@
 HOSTNAME := $(shell hostname -s)
 
-INSTALLTARGETS := .vim/vimrc .vim/coc-settings.json .vim/after/syntax/syncolor.vim .vim/after/syntax/c.vim .vim/ftplugin/tex.vim .bashrc .bashrc_profile .inputrc .gitconfig .gitconfig .config/htop/htoprc .tmux.conf .config/waybar/config.jsonc .config/waybar/style.css .config/waybar/color.css .config/foot/foot.ini .config/mako/config .config/tofi/tofi.ini
+INSTALLTARGETS := .vim/vimrc .vim/coc-settings.json .vim/after/syntax/syncolor.vim .vim/after/syntax/c.vim .vim/ftplugin/tex.vim .bashrc .bashrc_profile .inputrc .gitconfig .gitignore .config/htop/htoprc .tmux.conf .config/waybar/config.jsonc .config/waybar/style.css .config/waybar/color.css .config/foot/foot.ini .config/mako/config .config/tofi/tofi.ini
 
 ifneq ($(filter $(HOSTNAME),gentoo-desktop gentoo-laptop pc64101-2536 lap1h85115chs), )
 	INSTALLTARGETS += .config/hypr/gruvbox.conf .config/hypr/hyprlock.conf .config/hypr/common.conf .config/hypr/hyprland.conf .config/hypr/hypridle.conf
@@ -36,7 +36,7 @@ $(HOME)/.inputrc: bash/inputrc
 
 $(HOME)/.gitconfig: git/gitconfig
 	install -pm 644 $< $@
-$(HOME)/.gitignore : git/gitignore
+$(HOME)/.gitignore: git/gitignore
 	install -pm 644 $< $@
 
 $(HOME)/.config/htop/htoprc: htop/htoprc
