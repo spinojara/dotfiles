@@ -17,5 +17,6 @@
 	tool = vimdiff
 [core]
 	editor = vim
+	excludesFile = ~/.gitignore
 [log]
 	date = iso
