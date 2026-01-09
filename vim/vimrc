@@ -9,6 +9,14 @@ set wrap
 set wildmode=longest:list
 set incsearch
 
+set timeout
+set timeoutlen=3000
+if exists('$SSH_CONNECTION')
+	set ttimeoutlen=100
+else
+	set ttimeoutlen=10
+endif
+
 set laststatus=2
 set statusline=
 set statusline+=%1*\%F         " Filename
