@@ -13,99 +13,99 @@ install: $(INSTALLTARGETS)
 # install targets
 $(HOME)/.vim/vimrc: vim/vimrc
 	mkdir -p $(HOME)/.vim
-	cp $< $@
+	install -pm 644 $< $@
 $(HOME)/.vim/coc-settings.json: vim/coc-settings.json
 	mkdir -p $(HOME)/.vim
-	cp $< $@
+	install -pm 644 $< $@
 $(HOME)/.vim/after/syntax/syncolor.vim: vim/syncolor.vim
 	mkdir -p $(HOME)/.vim/syntax
-	cp $< $@
+	install -pm 644 $< $@
 $(HOME)/.vim/after/syntax/c.vim: vim/c.vim
 	mkdir -p $(HOME)/.vim/after/syntax
-	cp $< $@
+	install -pm 644 $< $@
 $(HOME)/.vim/ftplugin/tex.vim: vim/tex.vim
 	mkdir -p $(HOME)/.vim/ftplugin
-	cp $< $@
+	install -pm 644 $< $@
 
 $(HOME)/.bashrc: bash/bashrc
-	cp $< $@
+	install -pm 644 $< $@
 $(HOME)/.bashrc_profile: bash/bash_profile
-	cp $< $@
+	install -pm 644 $< $@
 $(HOME)/.inputrc: bash/inputrc
-	cp $< $@
+	install -pm 644 $< $@
 
 $(HOME)/.gitconfig: git/gitconfig
-	cp $< $@
+	install -pm 644 $< $@
 
 $(HOME)/.config/htop/htoprc: htop/htoprc
 	mkdir -p $(HOME)/.config/htop
-	cp $< $@
+	install -pm 644 $< $@
 
 $(HOME)/.tmux.conf: tmux/tmux.conf
-	cp $< $@
+	install -pm 644 $< $@
 
 $(HOME)/.config/hypr/gruvbox.conf: hypr/gruvbox.conf
 	mkdir -p $(HOME)/.config/hypr
-	cp $< $@
+	install -pm 644 $< $@
 $(HOME)/.config/hypr/hyprlock.conf: hypr/hyprlock.conf
 	mkdir -p $(HOME)/.config/hypr
-	cp $< $@
+	install -pm 644 $< $@
 $(HOME)/.config/hypr/common.conf: hypr/common.conf
 	mkdir -p $(HOME)/.config/hypr
-	cp $< $@
+	install -pm 644 $< $@
 $(HOME)/.config/hypr/hyprland.conf: hypr/$(HOSTNAME)/hyprland.conf
 	mkdir -p $(HOME)/.config/hypr
-	cp $< $@
+	install -pm 644 $< $@
 $(HOME)/.config/hypr/hypridle.conf: hypr/$(HOSTNAME)/hypridle.conf
 	mkdir -p $(HOME)/.config/hypr
-	cp $< $@
+	install -pm 644 $< $@
 
 $(HOME)/.config/waybar/config.jsonc: waybar/config.jsonc
 	mkdir -p $(HOME)/.config/waybar
-	cp $< $@
+	install -pm 644 $< $@
 $(HOME)/.config/waybar/style.css: waybar/style.css
 	mkdir -p $(HOME)/.config/waybar
-	cp $< $@
+	install -pm 644 $< $@
 $(HOME)/.config/waybar/color.css: waybar/color.css
 	mkdir -p $(HOME)/.config/waybar
-	cp $< $@
+	install -pm 644 $< $@
 
 $(HOME)/.config/foot/foot.ini: foot/foot.ini
 	mkdir -p $(HOME)/.config/foot
-	cp $< $@
+	install -pm 644 $< $@
 
 $(HOME)/.config/mako/config: mako/config
 	mkdir -p $(HOME)/.config/mako
-	cp $< $@
+	install -pm 644 $< $@
 
 $(HOME)/.config/tofi/tofi.ini: tofi/tofi.ini
 	mkdir -p $(HOME)/.config/tofi
-	cp $< $@
+	install -pm 644 $< $@
 
 fetch: $(INSTALLTARGETS)
-	cp $(HOME)/.vim/vimrc vim/vimrc
-	cp $(HOME)/.vim/coc-settings.json vim/coc-settings.json
-	cp $(HOME)/.vim/after/syntax/syncolor.vim vim/syncolor.vim
-	cp $(HOME)/.vim/after/syntax/c.vim vim/c.vim
-	cp $(HOME)/.vim/ftplugin/tex.vim vim/tex.vim
-	cp $(HOME)/.bashrc bash/bashrc
-	cp $(HOME)/.bashrc_profile bash/bash_profile
-	cp $(HOME)/.inputrc bash/inputrc
-	cp $(HOME)/.gitconfig git/gitconfig
-	cp $(HOME)/.config/htop/htoprc htop/htoprc
-	cp $(HOME)/.tmux.conf tmux/tmux.conf
-	cp $(HOME)/.config/waybar/config.jsonc waybar/config.jsonc
-	cp $(HOME)/.config/waybar/style.css waybar/style.css
-	cp $(HOME)/.config/waybar/color.css waybar/color.css
-	cp $(HOME)/.config/foot/foot.ini foot/foot.ini
-	cp $(HOME)/.config/mako/config mako/config
-	cp $(HOME)/.config/tofi/tofi.ini tofi/tofi.ini
+	install -pm 644 $(HOME)/.vim/vimrc vim/vimrc
+	install -pm 644 $(HOME)/.vim/coc-settings.json vim/coc-settings.json
+	install -pm 644 $(HOME)/.vim/after/syntax/syncolor.vim vim/syncolor.vim
+	install -pm 644 $(HOME)/.vim/after/syntax/c.vim vim/c.vim
+	install -pm 644 $(HOME)/.vim/ftplugin/tex.vim vim/tex.vim
+	install -pm 644 $(HOME)/.bashrc bash/bashrc
+	install -pm 644 $(HOME)/.bashrc_profile bash/bash_profile
+	install -pm 644 $(HOME)/.inputrc bash/inputrc
+	install -pm 644 $(HOME)/.gitconfig git/gitconfig
+	install -pm 644 $(HOME)/.config/htop/htoprc htop/htoprc
+	install -pm 644 $(HOME)/.tmux.conf tmux/tmux.conf
+	install -pm 644 $(HOME)/.config/waybar/config.jsonc waybar/config.jsonc
+	install -pm 644 $(HOME)/.config/waybar/style.css waybar/style.css
+	install -pm 644 $(HOME)/.config/waybar/color.css waybar/color.css
+	install -pm 644 $(HOME)/.config/foot/foot.ini foot/foot.ini
+	install -pm 644 $(HOME)/.config/mako/config mako/config
+	install -pm 644 $(HOME)/.config/tofi/tofi.ini tofi/tofi.ini
 ifneq ($(filter $(HOSTNAME),gentoo-desktop gentoo-laptop pc64101-2536 lap1h85115chs), )
-	cp $(HOME)/.config/hypr/gruvbox.conf hypr/gruvbox.conf
-	cp $(HOME)/.config/hypr/hyprlock.conf hypr/hyprlock.conf
-	cp $(HOME)/.config/hypr/common.conf hypr/common.conf
-	cp $(HOME)/.config/hypr/hyprland.conf hypr/$(HOSTNAME)/hyprland.conf
-	cp $(HOME)/.config/hypr/hypridle.conf hypr/$(HOSTNAME)/hypridle.conf
+	install -pm 644 $(HOME)/.config/hypr/gruvbox.conf hypr/gruvbox.conf
+	install -pm 644 $(HOME)/.config/hypr/hyprlock.conf hypr/hyprlock.conf
+	install -pm 644 $(HOME)/.config/hypr/common.conf hypr/common.conf
+	install -pm 644 $(HOME)/.config/hypr/hyprland.conf hypr/$(HOSTNAME)/hyprland.conf
+	install -pm 644 $(HOME)/.config/hypr/hypridle.conf hypr/$(HOSTNAME)/hypridle.conf
 endif
 
 .PHONY: install fetch
