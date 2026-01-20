@@ -39,6 +39,7 @@ nnoremap "+p :let @"=substitute(system("wl-paste --no-newline"), '<C-v><C-m>', '
 nnoremap "*p :let @"=substitute(system("wl-paste --no-newline --primary"), '<C-v><C-m>', '', 'g')<cr>p
 
 nmap <silent><nowait> gd <Plug>(coc-definition)
+nmap <silent><nowait> gr <Plug>(coc-references)
 " nmap <silent><nowait> gi <Plug>(coc-implementation)
 " nmap <silent><nowait> gy <Plug>(coc-type-definition)
 
