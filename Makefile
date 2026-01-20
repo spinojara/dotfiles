@@ -1,12 +1,22 @@
 HOSTNAME := $(shell hostname -s)
 
-INSTALLTARGETS := .vim/vimrc .vim/coc-settings.json .vim/after/syntax/syncolor.vim .vim/after/syntax/c.vim .vim/ftplugin/tex.vim .bashrc .bashrc_profile .inputrc .gitconfig .gitignore .config/htop/htoprc .tmux.conf .config/waybar/config.jsonc .config/waybar/style.css .config/waybar/color.css .config/foot/foot.ini .config/mako/config .config/tofi/tofi.ini
+INSTALLTARGETS := .vim/vimrc .vim/coc-settings.json .vim/after/syntax/syncolor.vim .vim/after/syntax/c.vim .vim/ftplugin/tex.vim .bashrc .bashrc_profile .inputrc .gitconfig .gitignore .config/htop/htoprc .tmux.conf .config/waybar/config.jsonc .config/waybar/style.css .config/waybar/color.css .config/foot/foot.ini .config/mako/config .config/tofi/tofi.ini .config/home-manager/home.nix .config/home-manager/flake.nix
 
 ifneq ($(filter $(HOSTNAME),gentoo-desktop gentoo-laptop pc64101-2536 lap1h85115chs), )
 	INSTALLTARGETS += .config/hypr/gruvbox.conf .config/hypr/hyprlock.conf .config/hypr/common.conf .config/hypr/hyprland.conf .config/hypr/hypridle.conf
 endif
 
 INSTALLTARGETS := $(addprefix $(HOME)/,$(INSTALLTARGETS))
+
+RPAREN = (
+LPAREN = )
+GPU_VENDOR := $(shell \
+	for d in /sys/class/drm/card*/device/vendor; do \
+		case "$$$(RPAREN)cat $$d$(LPAREN)" in \
+			0x10de$(LPAREN) echo nvidia ; exit ;; \
+			0x1002$(LPAREN) echo mesa ; exit ;; \
+		esac; \
+	done )
 
 install: $(INSTALLTARGETS)
 
@@ -84,6 +94,15 @@ $(HOME)/.config/tofi/tofi.ini: tofi/tofi.ini
 	mkdir -p $(HOME)/.config/tofi
 	install -pm 644 $< $@
 
+$(HOME)/.config/home-manager/flake.nix: nix/flake.nix
+	mkdir -p $(HOME)/.config/home-manager
+	install -pm 644 $< $@
+
+$(HOME)/.config/home-manager/home.nix: nix/home.nix
+	mkdir -p $(HOME)/.config/home-manager
+	install -pm 644 $< $@
+	sed -i 's/GPU_VENDOR/$(GPU_VENDOR)/g' $@
+
 fetch: $(INSTALLTARGETS)
 	install -pm 644 $(HOME)/.vim/vimrc vim/vimrc
 	install -pm 644 $(HOME)/.vim/coc-settings.json vim/coc-settings.json
@@ -103,6 +122,8 @@ fetch: $(INSTALLTARGETS)
 	install -pm 644 $(HOME)/.config/foot/foot.ini foot/foot.ini
 	install -pm 644 $(HOME)/.config/mako/config mako/config
 	install -pm 644 $(HOME)/.config/tofi/tofi.ini tofi/tofi.ini
+	install -pm 644 $(HOME)/.config/home-manager/home.nix nix/home.nix
+	install -pm 644 $(HOME)/.config/home-manager/flake.nix nix/flake.nix
 ifneq ($(filter $(HOSTNAME),gentoo-desktop gentoo-laptop pc64101-2536 lap1h85115chs), )
 	install -pm 644 $(HOME)/.config/hypr/gruvbox.conf hypr/gruvbox.conf
 	install -pm 644 $(HOME)/.config/hypr/hyprlock.conf hypr/hyprlock.conf

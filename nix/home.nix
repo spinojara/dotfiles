@@ -29,7 +29,7 @@
 
   nixGL = {
     packages = nixGL.packages; # you must set this or everything will be a noop
-    defaultWrapper = "nvidia"; # choose from nixGL options depending on GPU
+    defaultWrapper = "GPU_VENDOR"; # choose from nixGL options depending on GPU
   };
 
   home = {
