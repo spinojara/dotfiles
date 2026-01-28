@@ -123,6 +123,7 @@ fetch: $(INSTALLTARGETS)
 	install -pm 644 $(HOME)/.config/mako/config mako/config
 	install -pm 644 $(HOME)/.config/tofi/tofi.ini tofi/tofi.ini
 	install -pm 644 $(HOME)/.config/home-manager/home.nix nix/home.nix
+	sed -i 's/"\(nvidia\|mesa\)"/"GPU_VENDOR"/g' nix/home.nix
 	install -pm 644 $(HOME)/.config/home-manager/flake.nix nix/flake.nix
 ifneq ($(filter $(HOSTNAME),gentoo-desktop gentoo-laptop pc64101-2536 lap1h85115chs), )
 	install -pm 644 $(HOME)/.config/hypr/gruvbox.conf hypr/gruvbox.conf
