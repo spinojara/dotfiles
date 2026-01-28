@@ -17,6 +17,11 @@ else
 	set ttimeoutlen=10
 endif
 
+set undofile
+set undodir=$HOME/.vim/undo
+set undolevels=1000
+set undoreload=10000
+
 set laststatus=2
 set statusline=
 set statusline+=%1*\%F         " Filename

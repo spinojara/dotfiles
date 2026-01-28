@@ -22,7 +22,7 @@ install: $(INSTALLTARGETS)
 
 # install targets
 $(HOME)/.vim/vimrc: vim/vimrc
-	mkdir -p $(HOME)/.vim
+	mkdir -p $(HOME)/.vim/undo
 	install -pm 644 $< $@
 $(HOME)/.vim/coc-settings.json: vim/coc-settings.json
 	mkdir -p $(HOME)/.vim
