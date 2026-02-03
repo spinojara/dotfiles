@@ -4,7 +4,6 @@
   lib,
   inputs,
   nixGL,
-  pkgs-clickhouse,
   ...
 }:
 {
@@ -43,6 +42,7 @@
       (config.lib.nixGL.wrap firefox)
       kubectl
       kind
+      kubectx
       kubernetes-helm
       hyprshot
       hyprwayland-scanner
@@ -53,7 +53,6 @@
       foot
       mako
       spotify
-      pkgs-clickhouse.clickhouse
     ];
   };
 
