@@ -1,6 +1,6 @@
 HOSTNAME := $(shell hostname -s)
 
-INSTALLTARGETS := .vim/vimrc .vim/coc-settings.json .vim/after/syntax/syncolor.vim .vim/after/syntax/c.vim .vim/ftplugin/tex.vim .bashrc .bashrc_profile .inputrc .gitconfig .gitignore .config/htop/htoprc .tmux.conf .config/waybar/config.jsonc .config/waybar/style.css .config/waybar/color.css .config/foot/foot.ini .config/mako/config .config/tofi/tofi.ini .config/home-manager/home.nix .config/home-manager/flake.nix
+INSTALLTARGETS := .vim/vimrc .vim/coc-settings.json .vim/after/syntax/syncolor.vim .vim/after/syntax/c.vim .vim/ftplugin/tex.vim .bashrc .bash_profile .inputrc .gitconfig .gitignore .config/htop/htoprc .tmux.conf .config/waybar/config.jsonc .config/waybar/style.css .config/waybar/color.css .config/foot/foot.ini .config/mako/config .config/tofi/tofi.ini .config/home-manager/home.nix .config/home-manager/flake.nix
 
 ifneq ($(filter $(HOSTNAME),gentoo-desktop gentoo-laptop pc64101-2536 lap1h85115chs), )
 	INSTALLTARGETS += .config/hypr/gruvbox.conf .config/hypr/hyprlock.conf .config/hypr/common.conf .config/hypr/hyprland.conf .config/hypr/hypridle.conf
@@ -39,7 +39,7 @@ $(HOME)/.vim/ftplugin/tex.vim: vim/tex.vim
 
 $(HOME)/.bashrc: bash/bashrc
 	install -pm 644 $< $@
-$(HOME)/.bashrc_profile: bash/bash_profile
+$(HOME)/.bash_profile: bash/bash_profile
 	install -pm 644 $< $@
 $(HOME)/.inputrc: bash/inputrc
 	install -pm 644 $< $@
@@ -110,7 +110,7 @@ fetch: $(INSTALLTARGETS)
 	install -pm 644 $(HOME)/.vim/after/syntax/c.vim vim/c.vim
 	install -pm 644 $(HOME)/.vim/ftplugin/tex.vim vim/tex.vim
 	install -pm 644 $(HOME)/.bashrc bash/bashrc
-	install -pm 644 $(HOME)/.bashrc_profile bash/bash_profile
+	install -pm 644 $(HOME)/.bash_profile bash/bash_profile
 	install -pm 644 $(HOME)/.inputrc bash/inputrc
 	install -pm 644 $(HOME)/.gitconfig git/gitconfig
 	install -pm 644 $(HOME)/.gitignore git/gitignore
