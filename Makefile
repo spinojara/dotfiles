@@ -1,22 +1,24 @@
-HOSTNAME := $(shell hostname -s)
+HOSTNAME := $(shell uname -n)
 
 INSTALLTARGETS := .vim/vimrc .vim/coc-settings.json .vim/after/syntax/syncolor.vim .vim/after/syntax/c.vim .vim/ftplugin/tex.vim .bashrc .bash_profile .inputrc .gitconfig .gitignore .config/htop/htoprc .tmux.conf .config/waybar/config.jsonc .config/waybar/style.css .config/waybar/color.css .config/foot/foot.ini .config/mako/config .config/tofi/tofi.ini .config/home-manager/home.nix .config/home-manager/flake.nix
 
 ifneq ($(filter $(HOSTNAME),gentoo-desktop gentoo-laptop pc64101-2536 lap1h85115chs), )
 	INSTALLTARGETS += .config/hypr/gruvbox.conf .config/hypr/hyprlock.conf .config/hypr/common.conf .config/hypr/hyprland.conf .config/hypr/hypridle.conf
+	RPAREN = (
+	LPAREN = )
+	GPU_VENDOR := $(shell \
+		for d in /sys/class/drm/card*/device/vendor; do \
+			case "$$$(RPAREN)cat $$d$(LPAREN)" in \
+				0x10de$(LPAREN) echo nvidia ; exit ;; \
+				0x1002$(LPAREN) echo mesa ; exit ;; \
+			esac; \
+		done )
+else
+	GPU_VENDOR := unknown_gpu
 endif
 
-INSTALLTARGETS := $(addprefix $(HOME)/,$(INSTALLTARGETS))
 
-RPAREN = (
-LPAREN = )
-GPU_VENDOR := $(shell \
-	for d in /sys/class/drm/card*/device/vendor; do \
-		case "$$$(RPAREN)cat $$d$(LPAREN)" in \
-			0x10de$(LPAREN) echo nvidia ; exit ;; \
-			0x1002$(LPAREN) echo mesa ; exit ;; \
-		esac; \
-	done )
+INSTALLTARGETS := $(addprefix $(HOME)/,$(INSTALLTARGETS))
 
 install: $(INSTALLTARGETS)
 
@@ -123,7 +125,7 @@ fetch: $(INSTALLTARGETS)
 	install -pm 644 $(HOME)/.config/mako/config mako/config
 	install -pm 644 $(HOME)/.config/tofi/tofi.ini tofi/tofi.ini
 	install -pm 644 $(HOME)/.config/home-manager/home.nix nix/home.nix
-	sed -i 's/"\(nvidia\|mesa\)"/"GPU_VENDOR"/g' nix/home.nix
+	sed -i 's/"\(nvidia\|mesa\|unknown_gpu\)"/"GPU_VENDOR"/g' nix/home.nix
 	install -pm 644 $(HOME)/.config/home-manager/flake.nix nix/flake.nix
 ifneq ($(filter $(HOSTNAME),gentoo-desktop gentoo-laptop pc64101-2536 lap1h85115chs), )
 	install -pm 644 $(HOME)/.config/hypr/gruvbox.conf hypr/gruvbox.conf
