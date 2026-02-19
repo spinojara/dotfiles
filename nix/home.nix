@@ -53,6 +53,7 @@
       foot
       mako
       spotify
+      krita
     ];
   };
 
