@@ -6,7 +6,7 @@
 }
 
 window#waybar {
-    background-color: alpha(@red, 0.01);
+    background-color: @black;
     color: @whitehl;
     border-radius: 999px;
     transition-property: background-color;
@@ -19,6 +19,13 @@ button {
     color: @whitehl;
     border-radius: 0;
     transition-duration: 0s;
+}
+
+.modules-left {
+    padding: 2px 0px 0px 0px;
+}
+.modules-right {
+    padding: 2px 0px 0px 0px;
 }
 
 #workspaces button {
@@ -55,12 +62,12 @@ button {
 #backlight,
 #network,
 #pulseaudio {
-    padding: 0 8px;
+    padding: 0px 7px;
     background-color: transparent;
 }
 
 #workspaces {
-    margin: 0 4px;
+    padding: 0px 4px;
 }
 
 @keyframes blinkred {
