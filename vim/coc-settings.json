@@ -11,6 +11,6 @@
 		"right": 3
 	},
 
-	"clangd.path": "/usr/bin/clangd-20",
+	"clangd.path": "clangd",
 	"clangd.arguments": [ "-j", "4" ]
 }
