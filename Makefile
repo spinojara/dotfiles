@@ -53,7 +53,7 @@ $(HOME)/.gitignore: git/gitignore
 
 $(HOME)/.config/htop/htoprc: htop/htoprc
 	mkdir -p $(HOME)/.config/htop
-	install -pm 644 $< $@
+	install -pm 444 $< $@
 
 $(HOME)/.tmux.conf: tmux/tmux.conf
 	install -pm 644 $< $@
