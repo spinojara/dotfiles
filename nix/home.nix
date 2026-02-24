@@ -54,6 +54,7 @@
       mako
       spotify
       krita
+      htop
     ];
   };
 
