@@ -30,7 +30,7 @@ $(HOME)/.vim/coc-settings.json: vim/coc-settings.json
 	mkdir -p $(HOME)/.vim
 	install -pm 644 $< $@
 $(HOME)/.vim/after/syntax/syncolor.vim: vim/syncolor.vim
-	mkdir -p $(HOME)/.vim/syntax
+	mkdir -p $(HOME)/.vim/after/syntax
 	install -pm 644 $< $@
 $(HOME)/.vim/after/syntax/c.vim: vim/c.vim
 	mkdir -p $(HOME)/.vim/after/syntax
