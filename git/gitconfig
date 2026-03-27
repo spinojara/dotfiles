@@ -3,6 +3,10 @@
 	name = Isak Ellmer
 [pull]
 	rebase = true
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
 [alias]
 	adog = log --all --decorate --graph --pretty=format:'%C(auto)%h%C(reset) %C(magenta)%an%C(reset)%C(auto)%d%C(reset) %s'
 	br = branch
@@ -15,8 +19,22 @@
 	tool = vimdiff
 [diff]
 	tool = vimdiff
+	algorithm = histogram
+	renames = true
 [core]
 	editor = vim
 	excludesFile = ~/.gitignore
 [log]
 	date = iso
+[branch]
+	sort = committerdate
+[column]
+	ui = auto
+[tag]
+	sort = version:refname
+[init]
+	defaultBranch = master
+[push]
+	autoSetupRemote = true
+[commit]
+	verbose = true
