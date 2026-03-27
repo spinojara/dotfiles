@@ -1,2 +1,5 @@
 .*.sw[a-p]
 .*.s[a-v][a-z]
+.venv
+venv
+.env
