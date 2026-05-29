@@ -55,6 +55,7 @@
       spotify
       krita
       htop
+      nixGL.packages.x86_64-linux.nixGLDefault
     ];
   };
 
