@@ -1,4 +1,5 @@
 local terminal = "foot"
+-- The printf business at the end makes programs with spaces in the name executable
 local menu = "ls -1 --color=never /usr/local/dmenubin | sort -u | tofi --config ~/.config/tofi/tofi.ini | xargs -0 bash -c 'exec /usr/local/dmenubin/\"$(printf %s \"$@\")\"' _"
 
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
@@ -78,10 +79,10 @@ hl.config({
 })
 
 hl.on("hyprland.start", function()
-	hl.exec_cmd("waybar")
+	hl.exec_cmd("dbus-update-activation-environment --systemd --all")
 	hl.exec_cmd("mako")
 	hl.exec_cmd("hypridle")
-	hl.exec_cmd("dbus-update-activation-environment --systemd --all")
+	hl.exec_cmd("waybar")
 end)
 
 hl.bind("ALT + SHIFT + RETURN", hl.dsp.exec_cmd(terminal))
@@ -101,6 +102,7 @@ hl.bind("ALT + SHIFT + f", hl.dsp.exec_cmd("hyprshot -z -m region -o $HOME/Scree
 hl.bind("CTRL + ALT + f", hl.dsp.exec_cmd("hyprshot -z -m output -o $HOME/Screenshots -t 2000"))
 hl.bind("ALT + b", hl.dsp.exec_cmd("makoctl dismiss"))
 hl.bind("ALT + SHIFT + b", hl.dsp.exec_cmd("makoctl invoke"))
+hl.bind("F11", hl.dsp.window.fullscreen())
 
 -- Send regular shortcuts
 for i = 1, 12 do
@@ -109,17 +111,79 @@ end
 
 -- Mouse
 hl.bind("ALT + mouse:272", hl.dsp.window.drag(), { mouse = true })
-hl.bind("ALT + mouse:272", hl.dsp.window.float(), { mouse = true })
+hl.bind("ALT + mouse:272", hl.dsp.window.float(), { mouse = true, click = true })
 hl.bind("ALT + SHIFT + mouse:272", hl.dsp.window.resize(), { mouse = true })
 
-function add_workspace (workspace, monitor)
-	hl.workspace_rule({ workspace = "name:" .. workspace, persistent = true, monitor = monitor })
+-- Audio
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"))
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { repeating = true })
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"), { repeating = true })
+hl.bind("SHIFT + XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"))
+hl.bind("SHIFT + XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-"), { repeating = true })
+hl.bind("SHIFT + XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+"), { repeating = true })
+hl.bind("F1", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"))
+hl.bind("F2", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { repeating = true })
+hl.bind("F3", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"), { repeating = true })
+hl.bind("SHIFT + F1", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"))
+hl.bind("SHIFT + F2", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-"), { repeating = true })
+hl.bind("SHIFT + F3", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+"), { repeating = true })
+
+-- Audio players
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"))
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"))
+hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"))
+hl.bind("F5", hl.dsp.exec_cmd("playerctl play-pause"))
+hl.bind("F6", hl.dsp.exec_cmd("playerctl previous"))
+hl.bind("F7", hl.dsp.exec_cmd("playerctl next"))
+
+-- Backlight
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 5%-"), { repeating = true })
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl set 5%+"), { repeating = true })
+hl.bind("XF86KbdBrightnessDown", hl.dsp.exec_cmd("brightnessctl -d *::kbd_backlight set 33%-"), { repeating = true })
+hl.bind("XF86KbdBrightnessUp", hl.dsp.exec_cmd("brightnessctl -d *::kbd_backlight set 33%+"), { repeating = true })
+hl.bind("F9", hl.dsp.exec_cmd("brightnessctl set 5%-"), { repeating = true })
+hl.bind("F10", hl.dsp.exec_cmd("brightnessctl set 5%+"), { repeating = true })
+hl.bind("SHIFT + F9", hl.dsp.exec_cmd("brightnessctl -d *::kbd_backlight set 33%-"), { repeating = true })
+hl.bind("SHIFT + F10", hl.dsp.exec_cmd("brightnessctl -d *::kbd_backlight set 33%+"), { repeating = true })
+
+
+function add_workspace (workspace, monitor, default, workspace_count)
+	hl.workspace_rule({ workspace = tostring(workspace_count), default_name = workspace, persistent = true, monitor = monitor, default = default })
 	hl.bind("ALT + " .. workspace, hl.dsp.focus({workspace = "name:" .. workspace}))
 	hl.bind("ALT + SHIFT + " .. workspace, hl.dsp.window.move({workspace = "name:" .. workspace, follow = false}))
 end
 
 function add_workspaces (workspaces)
-	for workspace, monitor in pairs(workspaces) do
-		add_workspace(workspace, monitor)
+	for index, arr in ipairs(workspaces) do
+		add_workspace(arr[1], arr[2], arr[3], index)
 	end
 end
+
+hl.window_rule({
+	match = {
+		float = true,
+	},
+	opacity = 0.80
+})
+
+-- Fix some dragging issues with XWayland
+hl.window_rule({
+	name  = "fix-xwayland-drags",
+	match = {
+		class      = "^$",
+		title      = "^$",
+		xwayland   = true,
+		float      = true,
+		fullscreen = false,
+		pin        = false,
+	},
+	no_focus = true,
+})
+
+
+-- Ignore maximize requests from all apps. You'll probably like this.
+hl.window_rule({
+	name  = "suppress-maximize-events",
+	match = { class = ".*" },
+	suppress_event = "maximize",
+})
