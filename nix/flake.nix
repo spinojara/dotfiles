@@ -8,7 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixGL = {
-      url = "github:spinojara/nixGL/fix-versionMatch";
+      url = "github:spinojara/nixGL/fix-nvidia-kernel-param";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

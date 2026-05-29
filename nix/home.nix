@@ -23,10 +23,11 @@
       name = "Adwaita";
       package = pkgs.adwaita-icon-theme;
     };
+    gtk4.theme = config.gtk.theme;
   };
   fonts.fontconfig.enable = true;
 
-  nixGL = {
+  targets.genericLinux.nixGL = {
     packages = nixGL.packages; # you must set this or everything will be a noop
     defaultWrapper = "GPU_VENDOR"; # choose from nixGL options depending on GPU
   };
