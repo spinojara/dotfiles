@@ -13,12 +13,7 @@
 	st = status
 	ci = commit
 	co = checkout
-[pager]
-	diff = true
-[merge]
-	tool = vimdiff
 [diff]
-	tool = vimdiff
 	algorithm = histogram
 	renames = true
 [core]
