@@ -1,0 +1,19 @@
+{
+  "model": "claude-opus-4-7",
+  "statusLine": {
+    "type": "command",
+    "command": "bash $HOME/.claude/statusline-command.sh"
+  },
+  "syntaxHighlightingDisabled": false,
+  "effortLevel": "xhigh",
+  "theme": "dark-ansi",
+  "editorMode": "vim",
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(git diff)",
+      "Bash(git log)",
+      "Bash(git status)"
+    ]
+  }
+}

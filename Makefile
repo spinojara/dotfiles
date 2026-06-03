@@ -1,6 +1,6 @@
 HOSTNAME := $(shell uname -n)
 
-INSTALLTARGETS := .vim/vimrc .vim/coc-settings.json .vim/after/syntax/syncolor.vim .vim/after/syntax/c.vim .vim/ftplugin/tex.vim .bashrc .bash_profile .inputrc .gitconfig .gitignore .config/htop/htoprc .tmux.conf .config/waybar/config.jsonc .config/waybar/style.css .config/waybar/color.css .config/foot/foot.ini .config/mako/config .config/tofi/tofi.ini .config/home-manager/home.nix .config/home-manager/flake.nix
+INSTALLTARGETS := .vim/vimrc .vim/coc-settings.json .vim/after/syntax/syncolor.vim .vim/after/syntax/c.vim .vim/ftplugin/tex.vim .bashrc .bash_profile .inputrc .gitconfig .gitignore .config/htop/htoprc .tmux.conf .config/waybar/config.jsonc .config/waybar/style.css .config/waybar/color.css .config/foot/foot.ini .config/mako/config .config/tofi/tofi.ini .config/home-manager/home.nix .config/home-manager/flake.nix .claude/settings.json .claude/statusline-command.sh
 
 ifneq ($(filter $(HOSTNAME),gentoo-desktop gentoo-laptop pc64101-2536 lap1h85115chs), )
 	INSTALLTARGETS += .config/hypr/gruvbox.conf .config/hypr/hyprlock.conf .config/hypr/common.lua .config/hypr/hyprland.lua .config/hypr/hypridle.conf
@@ -105,6 +105,14 @@ $(HOME)/.config/home-manager/home.nix: nix/home.nix
 	install -pm 644 $< $@
 	sed -i 's/GPU_VENDOR/$(GPU_VENDOR)/g' $@
 
+$(HOME)/.claude/settings.json: claude/settings.json
+	mkdir -p $(HOME)/.claude
+	install -pm 644 $< $@
+
+$(HOME)/.claude/statusline-command.sh: claude/statusline-command.sh
+	mkdir -p $(HOME)/.claude
+	install -pm 644 $< $@
+
 fetch: $(INSTALLTARGETS)
 	install -pm 644 $(HOME)/.vim/vimrc vim/vimrc
 	install -pm 644 $(HOME)/.vim/coc-settings.json vim/coc-settings.json
@@ -127,6 +135,8 @@ fetch: $(INSTALLTARGETS)
 	install -pm 644 $(HOME)/.config/home-manager/home.nix nix/home.nix
 	sed -i 's/"\(nvidia\|mesa\|unknown_gpu\)"/"GPU_VENDOR"/g' nix/home.nix
 	install -pm 644 $(HOME)/.config/home-manager/flake.nix nix/flake.nix
+	install -pm 644 $(HOME)/.claude/settings.json claude/settings.json
+	install -pm 644 $(HOME)/.claude/statusline-command.sh claude/statusline-command.sh
 ifneq ($(filter $(HOSTNAME),gentoo-desktop gentoo-laptop pc64101-2536 lap1h85115chs), )
 	install -pm 644 $(HOME)/.config/hypr/gruvbox.conf hypr/gruvbox.conf
 	install -pm 644 $(HOME)/.config/hypr/hyprlock.conf hypr/hyprlock.conf
