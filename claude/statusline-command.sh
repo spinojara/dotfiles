@@ -3,6 +3,8 @@ input=$(cat)
 cwd=$(echo "$input" | jq -r '.cwd')
 dir=$(basename "$cwd")
 host=$(hostname -s)
+model=$(echo "$input" | jq -r '.model.id')
+effort=$(echo "$input" | jq -r '.effort.level')
 
 cache="$HOME/.claude/cache/rate-limits.json"
 now=$(date +%s)
@@ -54,7 +56,7 @@ limits=""
 [ -n "$week" ] && limits="${limits} 7d:$(printf '%.0f' "$week")%"
 [ -n "$week" ] && [ -n "$week_reset" ] && limits="${limits}($(fmt_remaining "$week_reset"))"
 if [ -n "$limits" ]; then
-    printf '\033[0;31m%s \033[0;34m%s \033[0;33m%s\033[0m' "$host" "$dir" "$limits"
+    printf '\033[0;31m%s \033[0;34m%s \033[0;33m%s (%s)\033[0m %s' "$host" "$dir" "$model" "$effort" "$limits"
 else
-    printf '\033[0;31m%s \033[0;34m%s\033[0m' "$host" "$dir"
+    printf '\033[0;31m%s \033[0;34m%s\033[0m \033[0;33m%s (%s)\033[0m' "$host" "$dir" "$model" "$effort"
 fi
