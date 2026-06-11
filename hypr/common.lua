@@ -106,7 +106,13 @@ hl.bind("F11", hl.dsp.window.fullscreen())
 
 -- Send regular shortcuts
 for i = 1, 12 do
-	hl.bind("ALT + F" .. i, hl.dsp.send_shortcut({ mods = "", key = "F" .. i}))
+	-- This should be able to be a single send_shortcut call but there is currently a bug
+	-- https://github.com/hyprwm/Hyprland/discussions/14099
+	-- hl.bind("ALT + F" .. i, hl.dsp.send_shortcut({ mods = "", key = "F" .. i }))
+	hl.bind("ALT + F" .. i, function()
+		hl.dispatch(hl.dsp.send_key_state({ mods = "", state = "down", key = "a" }))
+		hl.dispatch(hl.dsp.send_key_state({ mods = "", state = "up", key = "a" }))
+	end, { repeating = true })
 end
 
 -- Mouse
