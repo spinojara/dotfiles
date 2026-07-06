@@ -29,7 +29,8 @@
 
   targets.genericLinux.nixGL = {
     packages = nixGL.packages; # you must set this or everything will be a noop
-    defaultWrapper = "GPU_VENDOR"; # choose from nixGL options depending on GPU
+    # detect GPU driver from /sys; impure, so run home-manager switch --impure
+    defaultWrapper = if builtins.pathExists "/sys/module/nvidia" then "nvidia" else "mesa";
   };
 
   home = {
