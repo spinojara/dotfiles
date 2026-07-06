@@ -110,8 +110,8 @@ for i = 1, 12 do
 	-- https://github.com/hyprwm/Hyprland/discussions/14099
 	-- hl.bind("ALT + F" .. i, hl.dsp.send_shortcut({ mods = "", key = "F" .. i }))
 	hl.bind("ALT + F" .. i, function()
-		hl.dispatch(hl.dsp.send_key_state({ mods = "", state = "down", key = "a" }))
-		hl.dispatch(hl.dsp.send_key_state({ mods = "", state = "up", key = "a" }))
+		hl.dispatch(hl.dsp.send_key_state({ mods = "", state = "down", key = "F" .. i }))
+		hl.dispatch(hl.dsp.send_key_state({ mods = "", state = "up", key = "F" .. i }))
 	end, { repeating = true })
 end
 
