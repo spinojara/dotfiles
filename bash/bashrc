@@ -8,6 +8,13 @@ alias ls="ls --color=always"
 alias grep="grep --color=always -I"
 alias less="less -R"
 
+# clickhouse client myargs -> clickhouse client --vim myargs
+clickhouse() {
+	command clickhouse "$1" --vim "${@:2}"
+}
+alias clickhouse-client="clickhouse-client --vim"
+alias clickhouse-local="clickhouse-local --vim"
+
 export PROMPT_COMMAND='history -a'
 export HISTSIZE=
 export HISTFILESIZE=
