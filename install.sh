@@ -10,7 +10,7 @@ link() {
 
 hypr=
 case "$(uname -n)" in
-gentoo-desktop|gentoo-laptop|pc64101-2536|lap1h85115chs) hypr=1 ;;
+gentoo-desktop|gentoo-laptop|pc64101-2536|lap1h85115chs|gentoo-lu) hypr=1 ;;
 esac
 
 mkdir -p "$HOME/.vim/undo"
